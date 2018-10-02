@@ -13,9 +13,14 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
+from biblio_app.views import MainCategoryView, SubCategoryView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url('main-category/$', MainCategoryView.as_view(), name='main-category'),
+    url('subcategory/$', SubCategoryView.as_view(), name='subcategory')
 ]
