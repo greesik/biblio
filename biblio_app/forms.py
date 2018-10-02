@@ -14,4 +14,5 @@ class Less3AuthorsForm(forms.Form):
     city = forms.CharField(label="Miasto wydania", max_length=64, required=False)
     year = forms.IntegerField(label="Rok wydania", max_value=9999, required=False)
     volume = forms.IntegerField(label="Numer tomu", required=False)
-    page = forms.CharField(label="Numer/numery stron", required=False)
+    page = forms.IntegerField(label="Numer/numery stron", required=False)
+

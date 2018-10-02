@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twój przypis:</h2>
+{{ author1_name }}
+{{ author1_last_name }},
+{{ author2_name }}
+{{ author2_last_name }},
+{{ author3_name }}
+{{ author3_last_name }},
+<i>{{ title }}</i>,
+przeł. {{ translator_name.0 }}.
+{{ translator_last_name }},
+{{ city }}
+{{ year }},
+t. {{ volume }},
+s. {{ page }}.
+
+{% endblock %}

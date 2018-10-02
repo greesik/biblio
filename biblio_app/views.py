@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
@@ -29,3 +30,33 @@ class Less3AuthorsFormView(View):
     def get(self, request, category_id, subcategory_id):
         form = Less3AuthorsForm()
         return render(request, 'certain-subcategory.html', {'form':form, 'button': 'Generuj przypis!'})
+    def post(self, request, category_id, subcategory_id):
+        form = Less3AuthorsForm(request.POST)
+        if form.is_valid():
+            author1_name = form.cleaned_data['author1_name']
+            author1_last_name = form.cleaned_data['author1_last_name']
+            author2_name = form.cleaned_data['author2_name']
+            author2_last_name = form.cleaned_data['author2_last_name']
+            author3_name = form.cleaned_data['author3_name']
+            author3_last_name = form.cleaned_data['author3_last_name']
+            title = form.cleaned_data['title']
+            translator_name = form.cleaned_data['translator_name']
+            translator_last_name = form.cleaned_data['translator_last_name']
+            city = form.cleaned_data['city']
+            year = form.cleaned_data['year']
+            volume = form.cleaned_data['volume']
+            page = form.cleaned_data['page']
+            ctx = {'author1_name': author1_name,
+                   'author1_last_name': author1_last_name,
+                   'author2_name':author2_name,
+                   'author2_last_name':author2_last_name,
+                   'author3_name':author3_name,
+                   'author3_last_name':author3_last_name,
+                   'title':title,
+                   'translator_name':translator_name,
+                   'translator_last_name':translator_last_name,
+                   'city':city,
+                   'year':year,
+                   'volume':volume,
+                   'page':page}
+        return render(request, 'less3authors-template.html', ctx)
