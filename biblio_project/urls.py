@@ -22,5 +22,5 @@ from biblio_app.views import MainCategoryView, SubCategoryView
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('main-category/$', MainCategoryView.as_view(), name='main-category'),
-    url('subcategory/$', SubCategoryView.as_view(), name='subcategory')
+    url('main-category/(?P<category_id>(\d)+)$', SubCategoryView.as_view(), name='subcategory')
 ]

@@ -11,6 +11,6 @@ class MainCategoryView(View):
 
 
 class SubCategoryView(View):
-    def get(self, request):
-        ctx = {"subcategory": SubCategory.objects.all()}
+    def get(self, request, category_id):
+        ctx = {"subcategory": SubCategory.objects.filter(main_cat=category_id)}
         return render(request, 'subcategory.html', ctx)
