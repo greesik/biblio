@@ -17,10 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path
 
-from biblio_app.views import MainCategoryView, SubCategoryView
+from biblio_app.views import MainCategoryView, SubCategoryView, CertainSubCategoryView, Less3AuthorsFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('main-category/$', MainCategoryView.as_view(), name='main-category'),
-    url('main-category/(?P<category_id>(\d)+)$', SubCategoryView.as_view(), name='subcategory')
+    url('main-category/(?P<category_id>(\d)+)$', SubCategoryView.as_view(), name='subcategory'),
+    url('^main-category/(?P<category_id>(\d)+)/(?P<subcategory_id>(\d)+)$', Less3AuthorsFormView.as_view(), name="certain-subcategory")
 ]

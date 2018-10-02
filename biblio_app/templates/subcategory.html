@@ -3,7 +3,7 @@
 <h2>Podkategorie:</h2>
         <ul>
         {% for podkategoria in subcategory %}
-            <li>{{ podkategoria.name }}
+            <li><a href="/main-category/{{ id_category }}/{{ podkategoria.id }}">{{ podkategoria.name }}</a>
             </li>
         {% endfor %}
         </ul>
