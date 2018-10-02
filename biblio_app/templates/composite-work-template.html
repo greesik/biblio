@@ -2,27 +2,25 @@
 
 {% block content %}
 <h2>Twój przypis:</h2>
-{{ author1_name }}
-{{ author1_last_name }},
 
-{% if author2_name %}
-    {{ author2_name }}
+{{ author_name.0 }}.
+{{ author_last_name }}.:
+
+
+{% if text_title %}
+    <i>{{ text_title }}</i> [w:],
 {% endif %}
 
-{% if author2_last_name %}
-    {{ author2_last_name }},
+{% if editor_last_name %}
+    {{ editor_last_name }}
 {% endif %}
 
-{% if author3_name %}
-    {{ author3_name }}
+{% if editor_name %}
+    {{ editor_name.0 }}. [red.]
 {% endif %}
 
-{% if author3_last_name %}
-    {{ author3_last_name }},
-{% endif %}
-
-{% if title %}
-    <i>{{ title }}</i>,
+{% if book_title %}
+    <i>{{ book_title }}</i>,
 {% endif %}
 
 {% if translator_name %}
@@ -36,12 +34,11 @@
 {% if city %}
     {{ city }}
 {% endif %}
+
 {% if year%}
     {{ year }},
 {% endif %}
-{% if volume %}
-    t. {{ volume }},
-{% endif %}
+
 {% if page %}
     s. {{ page }}.
 {% endif %}

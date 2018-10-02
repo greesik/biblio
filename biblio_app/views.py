@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
-from biblio_app.forms import Less3AuthorsForm
+from biblio_app.forms import Less3AuthorsForm, CompositeWorkForm
 from biblio_app.models import MainCategory, SubCategory
 
 
@@ -26,37 +26,71 @@ class CertainSubCategoryView(View):
         return render(request, 'certain-subcategory.html', ctx)
 
 
-class Less3AuthorsFormView(View):
+class FormsView(View):
+
     def get(self, request, category_id, subcategory_id):
-        form = Less3AuthorsForm()
-        return render(request, 'certain-subcategory.html', {'form':form, 'button': 'Generuj przypis!'})
+        if subcategory_id == '1':
+            form = Less3AuthorsForm()
+            return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
+        elif subcategory_id == '3':
+            form = CompositeWorkForm()
+            return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
+
     def post(self, request, category_id, subcategory_id):
-        form = Less3AuthorsForm(request.POST)
-        if form.is_valid():
-            author1_name = form.cleaned_data['author1_name']
-            author1_last_name = form.cleaned_data['author1_last_name']
-            author2_name = form.cleaned_data['author2_name']
-            author2_last_name = form.cleaned_data['author2_last_name']
-            author3_name = form.cleaned_data['author3_name']
-            author3_last_name = form.cleaned_data['author3_last_name']
-            title = form.cleaned_data['title']
-            translator_name = form.cleaned_data['translator_name']
-            translator_last_name = form.cleaned_data['translator_last_name']
-            city = form.cleaned_data['city']
-            year = form.cleaned_data['year']
-            volume = form.cleaned_data['volume']
-            page = form.cleaned_data['page']
-            ctx = {'author1_name': author1_name,
-                   'author1_last_name': author1_last_name,
-                   'author2_name':author2_name,
-                   'author2_last_name':author2_last_name,
-                   'author3_name':author3_name,
-                   'author3_last_name':author3_last_name,
-                   'title':title,
-                   'translator_name':translator_name,
-                   'translator_last_name':translator_last_name,
-                   'city':city,
-                   'year':year,
-                   'volume':volume,
-                   'page':page}
-        return render(request, 'less3authors-template.html', ctx)
+        if subcategory_id == '1':
+            form = Less3AuthorsForm(request.POST)
+            if form.is_valid():
+                author1_name = form.cleaned_data['author1_name']
+                author1_last_name = form.cleaned_data['author1_last_name']
+                author2_name = form.cleaned_data['author2_name']
+                author2_last_name = form.cleaned_data['author2_last_name']
+                author3_name = form.cleaned_data['author3_name']
+                author3_last_name = form.cleaned_data['author3_last_name']
+                title = form.cleaned_data['title']
+                translator_name = form.cleaned_data['translator_name']
+                translator_last_name = form.cleaned_data['translator_last_name']
+                city = form.cleaned_data['city']
+                year = form.cleaned_data['year']
+                volume = form.cleaned_data['volume']
+                page = form.cleaned_data['page']
+                ctx = {'author1_name': author1_name,
+                       'author1_last_name': author1_last_name,
+                       'author2_name': author2_name,
+                       'author2_last_name': author2_last_name,
+                       'author3_name': author3_name,
+                       'author3_last_name': author3_last_name,
+                       'title': title,
+                       'translator_name': translator_name,
+                       'translator_last_name': translator_last_name,
+                       'city': city,
+                       'year': year,
+                       'volume': volume,
+                       'page': page}
+                return render(request, 'less3authors-template.html', ctx)
+        if subcategory_id == '3':
+            form = CompositeWorkForm(request.POST)
+            if form.is_valid():
+                author_name = form.cleaned_data['author_name']
+                author_last_name = form.cleaned_data['author_last_name']
+                text_title = form.cleaned_data['text_title']
+                editor_name = form.cleaned_data['editor_name']
+                editor_last_name = form.cleaned_data['editor_last_name']
+                book_title = form.cleaned_data['book_title']
+                translator_name = form.cleaned_data['translator_name']
+                translator_last_name = form.cleaned_data['translator_last_name']
+                city = form.cleaned_data['city']
+                year = form.cleaned_data['year']
+                page = form.cleaned_data['page']
+                ctx = {
+                    'author_name': author_name,
+                    'author_last_name': author_last_name,
+                    'text_title': text_title,
+                    'editor_name': editor_name,
+                    'editor_last_name': editor_last_name,
+                    'book_title': book_title,
+                    'translator_name': translator_name,
+                    'translator_last_name': translator_last_name,
+                    'city': city,
+                    'year': year,
+                    'page': page}
+                return render(request, 'composite-work-template.html', ctx)
