@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twój przypis:</h2>
+{% if editor1_name %}
+    {{ editor1_name }}
+    {{ editor1_last_name }}{% if editor2_name %},
+        {{ editor2_name }}
+        {{ editor2_last_name }},
+    {% endif %}{% endif %} [red.],
+
+
+
+
+{% if title %}
+    <i>{{ title }}</i>,
+{% endif %}
+
+{% if translator_name %}
+    przeł. {{ translator_name.0 }}.
+{% endif %}
+
+{% if translator_last_name %}
+    {{ translator_last_name }},
+{% endif %}
+
+{% if city %}
+    {{ city }}
+{% endif %}
+{% if year%}
+    {{ year }},
+{% endif %}
+{% if volume %}
+    t. {{ volume }},
+{% endif %}
+{% if page %}
+    s. {{ page }}.
+{% endif %}
+
+{% endblock %}

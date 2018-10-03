@@ -1,7 +1,7 @@
 from django import forms
 
 
-class Less3AuthorsForm(forms.Form):
+class Less3AuthorsForm(forms.Form): #formularz do prac, które mają maksymalnie 3 autorów
     author1_name = forms.CharField(label="Imię autora", max_length=64, required=True)
     author1_last_name = forms.CharField(label="Nazwisko autora", max_length=64, required=True)
     author2_name = forms.CharField(label="Imię drugiego autora", max_length=64, required=False)
@@ -14,10 +14,24 @@ class Less3AuthorsForm(forms.Form):
     city = forms.CharField(label="Miasto wydania", max_length=64, required=False)
     year = forms.IntegerField(label="Rok wydania", max_value=9999, required=False)
     volume = forms.IntegerField(label="Numer tomu", required=False)
-    page = forms.IntegerField(label="Numer/numery stron", required=True)
+    page = forms.CharField(label="Numer/numery stron", required=True)
 
 
-class CompositeWorkForm(forms.Form):
+class More3AuthorsForm(forms.Form): #formularz do prac, które mają ponad 3 autorów
+    editor1_name = forms.CharField(label="Imię redaktora", max_length=64, required=True)
+    editor1_last_name = forms.CharField(label="Nazwisko redaktora", max_length=64, required=True)
+    editor2_name = forms.CharField(label="Imię drugiego redaktora", max_length=64, required=False)
+    editor2_last_name = forms.CharField(label="Nazwisko drugiego redaktora", max_length=64, required=False)
+    title = forms.CharField(label="Tytuł", max_length=256, required=True)
+    translator_name = forms.CharField(label="Imię tłumacza", max_length=64, required=False)
+    translator_last_name = forms.CharField(label="Nazwisko tłumacza", max_length=64, required=False)
+    city = forms.CharField(label="Miasto wydania", max_length=64, required=False)
+    year = forms.IntegerField(label="Rok wydania", max_value=9999, required=False)
+    volume = forms.IntegerField(label="Numer tomu", required=False)
+    page = forms.CharField(label="Numer/numery stron", required=True)
+
+
+class CompositeWorkForm(forms.Form): # formularz do prac, które są opracowaniami złożonymi z prac różnych autorów
     author_name = forms.CharField(label="Imię autora", max_length=64, required=True)
     author_last_name = forms.CharField(label="Nazwisko autora", max_length=64, required=True)
     text_title = forms.CharField(label="Tytuł artykułu", max_length=256, required=True)
@@ -28,5 +42,35 @@ class CompositeWorkForm(forms.Form):
     translator_last_name = forms.CharField(label="Nazwisko tłumacza", max_length=64, required=False)
     city = forms.CharField(label="Miasto wydania", max_length=64, required=False)
     year = forms.IntegerField(label="Rok wydania", max_value=9999, required=False)
-    page = forms.IntegerField(label="Numer/numery stron", required=True)
+    page = forms.CharField(label="Numer/numery stron", required=True)
+
+
+class DailyMagazineForm(forms.Form): # formularz do czasopisma codziennego lub tygodnika
+    author_name = forms.CharField(label="Imię autora", max_length=64, required=True)
+    author_last_name = forms.CharField(label="Nazwisko autora", max_length=64, required=True)
+    text_title = forms.CharField(label="Tytuł artykułu", max_length=256, required=True)
+    magazine_title = forms.CharField(label="Tytuł czasopisma", max_length=256, required=True)
+    year = forms.CharField(label="Dokładna data wydania", required=False)
+    magazine_number = forms.IntegerField(label="Numer wydania", required=False)
+    page = forms.CharField(label="Numer/numery stron", required=True)
+
+
+class PeriodicalMagazineForm(forms.Form): # formularz do periodyków
+    author_name = forms.CharField(label="Imię autora", max_length=64, required=True)
+    author_last_name = forms.CharField(label="Nazwisko autora", max_length=64, required=True)
+    text_title = forms.CharField(label="Tytuł artykułu", max_length=256, required=True)
+    magazine_title = forms.CharField(label="Tytuł czasopisma", max_length=256, required=True)
+    year = forms.IntegerField(label="Rok wydania", max_value=9999, required=False)
+    magazine_number = forms.IntegerField(label="Numer wydania", required=False)
+    page = forms.CharField(label="Numer/numery stron", required=True)
+
+
+class FilmForm(forms.Form):
+    film_title = forms.CharField(label="Tytuł filmu", max_length=128, required=True)
+    director_name = forms.CharField(label="Imię i nazwisko reżysera", max_length=128, required=True)
+    dop_name = forms.CharField(label="Imię i nazwisko autora zdjęć", required=False)
+    year = forms.IntegerField(label="Rok", min_value=1895, max_value=9999, required=False)
+    country = forms.CharField(label="Kraj produkcji", max_length=64, required=False)
+
+
 

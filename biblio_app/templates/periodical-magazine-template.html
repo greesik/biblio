@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twój przypis:</h2>
+{{ author_name.0 }}.
+{{ author_last_name }},
+
+{% if text_title %}
+    <i>{{ text_title }}</i>,
+{% endif %}
+{% if magazine_title %}
+    „{{ magazine_title }}”,
+{% endif %}
+
+{% if year%}
+    {{ year }},
+{% endif %}
+{% if magazine_number %}
+    nr {{ magazine_number }},
+{% endif %}
+
+{% if page %}
+    s. {{ page }}.
+{% endif %}
+<h2>Zapis bibliograficzny:</h2>
+
+
+{{ author_last_name }},
+{{ author_name.0 }}.
+{% if year %}
+    ({{ year }}).
+{% endif %}
+
+{% if text_title %}
+    <i>{{ text_title }}</i>.
+{% endif %}
+
+{% if magazine_title %}
+    „{{ magazine_title }}”,
+{% endif %}
+{% if magazine_number %}
+    nr {{ magazine_number }},
+{% endif %}
+
+
+{% endblock %}
