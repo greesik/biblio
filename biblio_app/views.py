@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import View
 
 from biblio_app.forms import Less3AuthorsForm, CompositeWorkForm, DailyMagazineForm, More3AuthorsForm, \
-    PeriodicalMagazineForm, FilmForm, WebArticleForm, WebPageForm
+    PeriodicalMagazineForm, FilmForm, WebArticleForm, WebPageForm, FotoForm
 from biblio_app.models import MainCategory, SubCategory
 
 
@@ -53,6 +53,9 @@ class FormsView(View):
             return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
         elif subcategory_id == '8':
             form = FilmForm()
+            return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
+        elif subcategory_id == '9':
+            form = FotoForm()
             return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
 
     def post(self, request, category_id, subcategory_id):
@@ -224,3 +227,14 @@ class FormsView(View):
                     'dop_name': dop_name,
                     'country': country}
                 return render(request, 'film-template.html', ctx)
+        if subcategory_id == '9':
+            form = FotoForm(request.POST)
+            if form.is_valid():
+                foto_number = form.cleaned_data['foto_number']
+                foto_description = form.cleaned_data['foto_description']
+                foto_source = form.cleaned_data['foto_source']
+                ctx = {
+                    'foto_number': foto_number,
+                    'foto_description': foto_description,
+                    'foto_source': foto_source}
+                return render(request, 'foto-template.html', ctx)

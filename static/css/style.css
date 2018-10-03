@@ -1,16 +1,11 @@
-page-header h1{
-    position: absolute;
-    align-items: center;
-}
+
 .page-header {
+    overflow: hidden;
     background-color: rgba(255, 210, 0, 1);
-    padding: 20px 20px 20px 0px;
-    text-align: center;
     box-shadow: 0px 1px 50px black;
     position: fixed;
     top: -40px;
     width: 100%;
-
 }
 .page-header a{
     margin: auto;
@@ -18,14 +13,14 @@ page-header h1{
     float: left;
     text-align: center;
     color: white;
-    padding-left: 30px;
+    padding: 30px 30px;
+}
+.page-header a:hover {
+    background: #ddd;
+    color: black;
 }
 
-h1 {
-    color: white;
-}
 .content {
-
     padding-left: 20px;
     font-family: "Bebas", sans-serif;
     margin-top:130px;

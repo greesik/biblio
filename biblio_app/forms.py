@@ -92,4 +92,9 @@ class FilmForm(forms.Form):
     country = forms.CharField(label="Kraj produkcji", max_length=64, required=False)
 
 
+class FotoForm(forms.Form):
+    foto_number = forms.IntegerField(label="Numer zdjęcia", min_value=1, required=True)
+    foto_description = forms.CharField(label="Opis zdjęcia", max_length=128, required=True)
+    foto_source = forms.CharField(label="Źródło zdjęcia", max_length=255, required=False)
+
 

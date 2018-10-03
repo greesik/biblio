@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twój podpis do zdjęcia:</h2>
+
+{% if foto_number %}
+    fot. {{ foto_number }}.
+{% endif %}
+{% if foto_description %}
+    {{ foto_description }}.
+{% endif %}
+{% if foto_source %}
+    Źródło: {{ foto_source }}.
+{% endif %}
+
+<h2>Zapis bibliograficzny:</h2>
+
+{% if foto_number %}
+    fot. {{ foto_number }}.
+{% endif %}
+{% if foto_description %}
+    {{ foto_description }}.
+{% endif %}
+{% if foto_source %}
+    Źródło: {{ foto_source }}.
+{% endif %}
+
+
+{% endblock %}
