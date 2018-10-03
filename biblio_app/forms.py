@@ -65,6 +65,25 @@ class PeriodicalMagazineForm(forms.Form): # formularz do periodyków
     page = forms.CharField(label="Numer/numery stron", required=True)
 
 
+class WebArticleForm(forms.Form):
+    author_name = forms.CharField(label="Imię autora", max_length=64, required=True)
+    author_last_name = forms.CharField(label="Nazwisko autora", max_length=64, required=True)
+    text_title = forms.CharField(label="Tytuł artykułu", max_length=256, required=True)
+    web_page_name = forms.CharField(label="Nazwa portalu", max_length=256, required=True)
+    number = forms.IntegerField(label="Numer wydania", min_value=1, required=False)
+    url = forms.URLField(label="Adres strony", required=True, initial="http://")
+    access = forms.CharField(label="Data dostępu", max_length=64, required=True, widget=forms.TextInput(
+        attrs={'placeholder':'Format dd.mm.rrrr'}))
+    year = forms.IntegerField(label="Rok publikacji artykułu", min_value=1999, max_value=9999, required=True)
+
+
+class WebPageForm(forms.Form):
+    web_page_name = forms.CharField(label="Nazwa portalu", max_length=256, required=True)
+    url = forms.URLField(label="Adres strony", required=True, initial="http://")
+    access = forms.CharField(label="Data dostępu", max_length=64, required=True, widget=forms.TextInput(
+        attrs={'placeholder': 'Format dd.mm.rrrr'}))
+
+
 class FilmForm(forms.Form):
     film_title = forms.CharField(label="Tytuł filmu", max_length=128, required=True)
     director_name = forms.CharField(label="Imię i nazwisko reżysera", max_length=128, required=True)

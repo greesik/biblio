@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twój przypis:</h2>
+<i>{{ film_title }}</i>,
+reż. {{ director_name }},
+
+{% if dop_name %}
+    zdj. {{ dop_name }},
+{% endif %}
+{% if country %}
+    {{ country }},
+{% endif %}
+{% if year%}
+    {{ year }}.
+{% endif %}
+
+<h2>Zapis bibliograficzny:</h2>
+<i><b>{{ film_title }}</b></i>,
+reż. {{ director_name }},
+
+{% if dop_name %}
+    zdj. {{ dop_name }},
+{% endif %}
+{% if country %}
+    {{ country }}
+{% endif %}
+{% if year%}
+    {{ year }}.
+{% endif %}
+
+
+
+{% endblock %}

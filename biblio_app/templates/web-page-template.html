@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twój przypis:</h2>
+
+{% if web_page_name %}
+    {{ web_page_name }}.
+{% endif %}
+
+{% if url %}
+    {{ url }}
+{% endif %}
+
+{% if access %}
+    (dostęp: {{ access }}).
+{% endif %}
+
+<h2>Zapis bibliograficzny:</h2>
+
+
+{% if web_page_name %}
+    {{ web_page_name }}.
+{% endif %}
+
+{% if url %}
+    {{ url }}
+{% endif %}
+
+{% if access %}
+    (dostęp: {{ access }}).
+{% endif %}
+
+{% endblock %}

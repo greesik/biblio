@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import View
 
 from biblio_app.forms import Less3AuthorsForm, CompositeWorkForm, DailyMagazineForm, More3AuthorsForm, \
-    PeriodicalMagazineForm, FilmForm
+    PeriodicalMagazineForm, FilmForm, WebArticleForm, WebPageForm
 from biblio_app.models import MainCategory, SubCategory
 
 
@@ -44,6 +44,12 @@ class FormsView(View):
             return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
         elif subcategory_id == '5':
             form = PeriodicalMagazineForm()
+            return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
+        elif subcategory_id == '6':
+            form = WebArticleForm()
+            return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
+        elif subcategory_id == '7':
+            form = WebPageForm()
             return render(request, 'certain-subcategory.html', {'form': form, 'button': 'Generuj przypis!'})
         elif subcategory_id == '8':
             form = FilmForm()
@@ -171,3 +177,50 @@ class FormsView(View):
                     'magazine_number': magazine_number,
                     'page': page}
                 return render(request, 'periodical-magazine-template.html', ctx)
+        if subcategory_id == '6':
+            form = WebArticleForm(request.POST)
+            if form.is_valid():
+                author_name = form.cleaned_data['author_name']
+                author_last_name = form.cleaned_data['author_last_name']
+                text_title = form.cleaned_data['text_title']
+                web_page_name = form.cleaned_data['web_page_name']
+                year = form.cleaned_data['year']
+                number = form.cleaned_data['number']
+                url = form.cleaned_data['url']
+                access = form.cleaned_data['access']
+                ctx = {
+                    'author_name': author_name,
+                    'author_last_name': author_last_name,
+                    'text_title': text_title,
+                    'web_page_name': web_page_name,
+                    'year': year,
+                    'number': number,
+                    'url': url,
+                    'access': access}
+                return render(request, 'web-article-template.html', ctx)
+        if subcategory_id == '7':
+            form = WebPageForm(request.POST)
+            if form.is_valid():
+                web_page_name = form.cleaned_data['web_page_name']
+                url = form.cleaned_data['url']
+                access = form.cleaned_data['access']
+                ctx = {
+                    'web_page_name': web_page_name,
+                    'url': url,
+                    'access': access}
+                return render(request, 'web-page-template.html', ctx)
+        if subcategory_id == '8':
+            form = FilmForm(request.POST)
+            if form.is_valid():
+                director_name = form.cleaned_data['director_name']
+                film_title = form.cleaned_data['film_title']
+                year = form.cleaned_data['year']
+                dop_name = form.cleaned_data['dop_name']
+                country = form.cleaned_data['country']
+                ctx = {
+                    'director_name': director_name,
+                    'film_title': film_title,
+                    'year': year,
+                    'dop_name': dop_name,
+                    'country': country}
+                return render(request, 'film-template.html', ctx)

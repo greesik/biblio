@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Twój przypis:</h2>
+{{ author_name.0 }}.
+{{ author_last_name }},
+
+{% if text_title %}
+    <i>{{ text_title }}</i>,
+{% endif %}
+{% if web_page_name %}
+    „{{ web_page_name }}”,
+{% endif %}
+
+{% if year %}
+    {{ year }}.
+{% endif %}
+{% if number %}
+    nr {{ number }},
+{% endif %}
+
+{% if url %}
+    {{ url }}
+{% endif %}
+{% if access %}
+    (dostęp: {{ access }}).
+{% endif %}
+<h2>Zapis bibliograficzny:</h2>
+
+
+{{ author_last_name }},
+{{ author_name.0 }}.
+{% if year %}
+    ({{ year }}).
+{% endif %}
+
+{% if text_title %}
+    <i>{{ text_title }}</i>.
+{% endif %}
+
+{% if web_page_name %}
+    „{{ web_page_name }}”{% if number %}, nr {{ number }}{% endif %}.
+{% endif %}
+
+{% if url %}
+    {{ url }}
+{% endif %}
+{% if access %}
+    (dostęp: {{access}}).
+{% endif %}
+
+{% endblock %}
