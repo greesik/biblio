@@ -68,7 +68,7 @@ class PeriodicalMagazineForm(forms.Form): # formularz do periodyków
 
 class WebArticleForm(forms.Form):
     author_name = forms.CharField(label="Imię autora", max_length=64, required=True)
-    author_last_name = forms.CharField(label="Nazwisko autora", max_length=64, required=True)
+    author_last_name = forms.CharField(label="Nazwisko autora lub nick", max_length=64, required=True)
     text_title = forms.CharField(label="Tytuł artykułu", max_length=256, required=True)
     web_page_name = forms.CharField(label="Nazwa portalu", max_length=256, required=True)
     number = forms.IntegerField(label="Numer wydania", min_value=1, required=False)
