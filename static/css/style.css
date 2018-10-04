@@ -17,8 +17,8 @@
     padding: 30px 30px;
 }
 .page-header a:hover {
-    background: white;
-    color: black;
+    background: #1f717d;
+    color: white;
 }
 .page-header span {
     display: block;

@@ -66,8 +66,8 @@ class PeriodicalMagazineForm(forms.Form): # formularz do periodyków
     page = forms.CharField(label="Numer/numery stron", required=True)
 
 
-class WebArticleForm(forms.Form):
-    author_name = forms.CharField(label="Imię autora", max_length=64, required=True)
+class WebArticleForm(forms.Form): # formularz do artykułów na stronach internetowych
+    author_name = forms.CharField(label="Imię autora", max_length=64, required=False)
     author_last_name = forms.CharField(label="Nazwisko autora lub nick", max_length=64, required=True)
     text_title = forms.CharField(label="Tytuł artykułu", max_length=256, required=True)
     web_page_name = forms.CharField(label="Nazwa portalu", max_length=256, required=True)
@@ -78,14 +78,14 @@ class WebArticleForm(forms.Form):
     year = forms.IntegerField(label="Rok publikacji artykułu", min_value=1999, max_value=9999, required=True)
 
 
-class WebPageForm(forms.Form):
+class WebPageForm(forms.Form): # formularz do stron internetowych
     web_page_name = forms.CharField(label="Nazwa portalu", max_length=256, required=True)
     url = forms.URLField(label="Adres strony", required=True, initial="http://")
     access = forms.CharField(label="Data dostępu", max_length=64, required=True, widget=forms.TextInput(
         attrs={'placeholder': 'Format dd.mm.rrrr'}))
 
 
-class FilmForm(forms.Form):
+class FilmForm(forms.Form): # formularz do filmów
     film_title = forms.CharField(label="Tytuł filmu", max_length=128, required=True)
     director_name = forms.CharField(label="Imię i nazwisko reżysera", max_length=128, required=True)
     dop_name = forms.CharField(label="Imię i nazwisko autora zdjęć", required=False)
@@ -93,7 +93,7 @@ class FilmForm(forms.Form):
     country = forms.CharField(label="Kraj produkcji", max_length=64, required=False)
 
 
-class FotoForm(forms.Form):
+class FotoForm(forms.Form): # formularz do fotografii
     foto_number = forms.IntegerField(label="Numer zdjęcia", min_value=1, required=True)
     foto_description = forms.CharField(label="Opis zdjęcia", max_length=128, required=True)
     foto_source = forms.CharField(label="Źródło zdjęcia", max_length=255, required=False)
