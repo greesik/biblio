@@ -50,7 +50,8 @@ class DailyMagazineForm(forms.Form): # formularz do czasopisma codziennego lub t
     author_last_name = forms.CharField(label="Nazwisko autora", max_length=64, required=True)
     text_title = forms.CharField(label="Tytuł artykułu", max_length=256, required=True)
     magazine_title = forms.CharField(label="Tytuł czasopisma", max_length=256, required=True)
-    year = forms.CharField(label="Dokładna data wydania", required=False)
+    year = forms.CharField(label="Dokładna data wydania", required=False, widget=forms.TextInput(
+        attrs={'placeholder':'np. 21 grudnia 2012'}))
     magazine_number = forms.IntegerField(label="Numer wydania", required=False)
     page = forms.CharField(label="Numer/numery stron", required=True)
 

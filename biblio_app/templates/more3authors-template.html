@@ -36,5 +36,34 @@
 {% if page %}
     s. {{ page }}.
 {% endif %}
+<h2>Zapis bibliograficzny:</h2>
+
+{% if editor1_last_name %}
+    {{ editor1_last_name }}
+    {{ editor1_name.0 }}.{% if editor2_last_name %},
+        {{ editor2_last_name }}
+        {{ editor2_name.0 }}.
+    {% endif %}{% endif %} [red.],
+{% if title %}
+    <i>{{ title }}</i>,
+{% endif %}
+
+{% if translator_name %}
+    przeł. {{ translator_name.0 }}.
+{% endif %}
+
+{% if translator_last_name %}
+    {{ translator_last_name }},
+{% endif %}
+
+{% if city %}
+    {{ city }}
+{% endif %}
+{% if year%}
+    {{ year }},
+{% endif %}
+{% if volume %}
+    t. {{ volume }}.
+{% endif %}
 
 {% endblock %}

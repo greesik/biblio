@@ -6,6 +6,7 @@
     position: fixed;
     top: -40px;
     width: 100%;
+    padding: 0;
 }
 .page-header a{
     margin: auto;

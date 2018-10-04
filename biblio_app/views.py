@@ -75,6 +75,17 @@ class FormsView(View):
                 year = form.cleaned_data['year']
                 volume = form.cleaned_data['volume']
                 page = form.cleaned_data['page']
+
+                if author3_last_name < author2_last_name:
+                    author3_last_name, author3_name, author2_last_name, author2_name = author2_last_name, author2_name,\
+                                                                                       author3_last_name, author3_name
+                if author3_last_name < author1_last_name:
+                    author3_last_name, author3_name, author1_last_name, author1_name = author1_last_name, author1_name,\
+                                                                                       author3_last_name, author3_name
+                if author2_last_name < author1_last_name:
+                    author2_last_name, author2_name, author1_last_name, author1_name = author1_last_name, author1_name,\
+                                                                                       author2_last_name, author2_name
+
                 ctx = {'author1_name': author1_name,
                        'author1_last_name': author1_last_name,
                        'author2_name': author2_name,
@@ -103,6 +114,10 @@ class FormsView(View):
                 year = form.cleaned_data['year']
                 volume = form.cleaned_data['volume']
                 page = form.cleaned_data['page']
+
+                if editor2_last_name < editor1_last_name: # warunkuję kolejność alfabetyczną nazwisk
+                    editor2_last_name, editor2_name, editor1_last_name, editor1_name = editor1_last_name, editor1_name, editor2_last_name, editor2_name
+
                 ctx = {'editor1_name': editor1_name,
                        'editor1_last_name': editor1_last_name,
                        'editor2_name': editor2_name,
