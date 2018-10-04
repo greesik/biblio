@@ -28,4 +28,25 @@
 }
 body {
     background-color: rgba(200, 200, 200, 0.75);
+    text-align: center;
+}
+ul {
+    padding: 0;
+    list-style: none;
+}
+.content h2{
+    font-size: 100px;
+}
+
+.content a{
+    margin: auto;
+    display: block;
+    float: left;
+    text-align: center;
+    color: black;
+    padding: 30px 60px;
+    font-size: 30px;
+}
+.category_link{
+    display: inline-block;
 }
