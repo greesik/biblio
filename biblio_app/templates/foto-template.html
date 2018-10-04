@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Twój podpis do zdjęcia:</h2>
 
-{% if foto_number %}
+<p>{% if foto_number %}
     fot. {{ foto_number }}.
 {% endif %}
 {% if foto_description %}
@@ -11,11 +11,13 @@
 {% endif %}
 {% if foto_source %}
     Źródło: {{ foto_source }}.
-{% endif %}
+    {% endif %}</p><br>
+<i>Aby dodać przypis w programie Microsoft Word, kliknij w miejsce, w którym chcesz dodać przypis i użyj kombinacji CTRL+ALT+J (Windows) lub COMMAND+OPTION+F (Mac).</i>
+
 
 <h2>Zapis bibliograficzny:</h2>
 
-{% if foto_number %}
+<p>{% if foto_number %}
     fot. {{ foto_number }}.
 {% endif %}
 {% if foto_description %}
@@ -23,7 +25,7 @@
 {% endif %}
 {% if foto_source %}
     Źródło: {{ foto_source }}.
-{% endif %}
+    {% endif %}</p>
 
 
 {% endblock %}

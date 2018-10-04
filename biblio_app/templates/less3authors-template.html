@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Twój przypis:</h2>
-{{ author1_name }}
+<p>{{ author1_name }}
 {{ author1_last_name }},
 
 {% if author2_name %}
@@ -44,12 +44,14 @@
 {% endif %}
 {% if page %}
     s. {{ page }}.
-{% endif %}
+    {% endif %}</p><br>
+<i>Aby dodać przypis w programie Microsoft Word, kliknij w miejsce, w którym chcesz dodać przypis i użyj kombinacji CTRL+ALT+J (Windows) lub COMMAND+OPTION+F (Mac).</i>
+
 
 <h2>Zapis bibliograficzny:</h2>
 
 
-{{ author1_last_name }}
+<p>{{ author1_last_name }}
 {{ author1_name.0 }}.,
 
 
@@ -90,6 +92,6 @@
 {% endif %}
 {% if volume %}
     t. {{ volume }}.
-{% endif %}
+    {% endif %}</p>
 
 {% endblock %}

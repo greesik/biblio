@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Twój przypis:</h2>
-<i>{{ film_title }}</i>,
+<p><i>{{ film_title }}</i>,
 reż. {{ director_name }},
 
 {% if dop_name %}
@@ -13,10 +13,12 @@ reż. {{ director_name }},
 {% endif %}
 {% if year%}
     {{ year }}.
-{% endif %}
+    {% endif %}</p><br>
+<i>Aby dodać przypis w programie Microsoft Word, kliknij w miejsce, w którym chcesz dodać przypis i użyj kombinacji CTRL+ALT+J (Windows) lub COMMAND+OPTION+F (Mac).</i>
+
 
 <h2>Zapis bibliograficzny:</h2>
-<i><b>{{ film_title }}</b></i>,
+<p><i><b>{{ film_title }}</b></i>,
 reż. {{ director_name }},
 
 {% if dop_name %}
@@ -27,7 +29,7 @@ reż. {{ director_name }},
 {% endif %}
 {% if year%}
     {{ year }}.
-{% endif %}
+    {% endif %}</p>
 
 
 

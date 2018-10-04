@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Twój przypis:</h2>
 
-{% if web_page_name %}
+<p>{% if web_page_name %}
     {{ web_page_name }}.
 {% endif %}
 
@@ -13,12 +13,14 @@
 
 {% if access %}
     (dostęp: {{ access }}).
-{% endif %}
+    {% endif %}</p><br>
+<i>Aby dodać przypis w programie Microsoft Word, kliknij w miejsce, w którym chcesz dodać przypis i użyj kombinacji CTRL+ALT+J (Windows) lub COMMAND+OPTION+F (Mac).</i>
+
 
 <h2>Zapis bibliograficzny:</h2>
 
 
-{% if web_page_name %}
+<p>{% if web_page_name %}
     {{ web_page_name }}.
 {% endif %}
 
@@ -28,6 +30,6 @@
 
 {% if access %}
     (dostęp: {{ access }}).
-{% endif %}
+    {% endif %}</p>
 
 {% endblock %}
