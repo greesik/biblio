@@ -2,9 +2,10 @@
 
 {% block content %}
 <h2>Twój przypis:</h2>
-<p>{{ author1_name }}
+<p>{% if author1_name %}
+    {{ author1_name }}
 {{ author1_last_name }},
-
+{% endif %}
 {% if author2_name %}
     {{ author2_name }}
 {% endif %}
@@ -51,8 +52,10 @@
 <h2>Zapis bibliograficzny:</h2>
 
 
-<p>{{ author1_last_name }}
+<p>{% if author1_name %}
+    {{ author1_last_name }}
 {{ author1_name.0 }}.,
+    {% endif %}
 
 
 
@@ -88,10 +91,6 @@
     {{ city }}
 {% endif %}
 {% if year%}
-    {{ year }},
-{% endif %}
-{% if volume %}
-    t. {{ volume }}.
-    {% endif %}</p>
+    {{ year }}{% endif %}{% if volume %}t. {{ volume }}{% endif %}.</p>
 
 {% endblock %}
